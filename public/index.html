@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antigravity - Premium Adaptive Learning & Practice Portal</title>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation Sidebar -->
+  <aside>
+    <div class="logo-container">
+      <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+      <div class="logo-text">Learning Portal</div>
+    </div>
+    
+    <ul class="nav-links">
+      <li><a class="nav-item active" onclick="switchTab('dashboard')"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+      <li><a class="nav-item" onclick="switchTab('ai-ml-nlp')"><i class="fa-solid fa-brain"></i> AI, ML & NLP</a></li>
+      <li><a class="nav-item" onclick="switchTab('dsa')"><i class="fa-solid fa-code"></i> DSA Practice</a></li>
+      <li><a class="nav-item" onclick="switchTab('system-design')"><i class="fa-solid fa-sitemap"></i> System Design</a></li>
+      <li><a class="nav-item" onclick="switchTab('advanced-genai')"><i class="fa-solid fa-microchip"></i> Advanced GenAI</a></li>
+      <li><a class="nav-item" onclick="switchTab('multi-agent')"><i class="fa-solid fa-network-wired"></i> Multi-Agent</a></li>
+      <li><a class="nav-item" onclick="switchTab('settings')"><i class="fa-solid fa-sliders"></i> Settings</a></li>
+    </ul>
+    
+    <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--glass-border); font-size: 0.8rem; color: var(--text-muted);">
+      <p><i class="fa-solid fa-user-graduate"></i> Active Session</p>
+      <p id="local-time-stamp" style="font-family: var(--font-mono); margin-top: 0.25rem;"></p>
+    </div>
+  </aside>
+
+  <!-- Main Content Body -->
+  <main>
+    <header>
+      <div class="header-title">
+        <h1 id="view-title">Dashboard</h1>
+        <p id="view-subtitle">Track your adaptive learning journey and practice live engineering scenarios.</p>
+      </div>
+      
+      <div class="header-actions">
+        <!-- API Connection Status Badge -->
+        <div id="api-status-badge" class="badge-api demo">
+          <i class="fa-solid fa-circle-nodes animate-pulse"></i> <span>Mock Mode</span>
+        </div>
+        
+        <!-- Journey Ledger Log Global Button -->
+        <button id="view-ledger-btn" onclick="openLedgerDrawer()" class="badge-api" style="background: rgba(79, 172, 254, 0.1); border-color: rgba(79, 172, 254, 0.2); color: var(--accent-blue); cursor: pointer; font-family: var(--font-sans); transition: var(--transition-fast);" onmouseover="this.style.background='rgba(79, 172, 254, 0.2)'" onmouseout="this.style.background='rgba(79, 172, 254, 0.1)'">
+          <i class="fa-solid fa-clock-rotate-left"></i> <span>Journey Log</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- SECTION: DASHBOARD -->
+    <section id="dashboard-view" class="view-section active">
+      <!-- Grid Stats Progress -->
+      <div class="grid-stats">
+        <div class="glass-card stat-card">
+          <div class="stat-info">
+            <h3>AI, ML & NLP</h3>
+            <p id="progress-text-aiml">0% complete</p>
+          </div>
+          <div class="stat-progress">
+            <svg class="progress-ring" width="60" height="60">
+              <circle class="progress-ring-circle" stroke="#1f1a3a" stroke-width="4" fill="transparent" r="26" cx="30" cy="30"/>
+              <circle id="progress-circle-aiml" class="progress-ring-circle" stroke="var(--accent-cyan)" stroke-width="4" stroke-linecap="round" fill="transparent" r="26" cx="30" cy="30" stroke-dasharray="163.36" stroke-dashoffset="163.36"/>
+            </svg>
+          </div>
+        </div>
+        
+        <div class="glass-card stat-card">
+          <div class="stat-info">
+            <h3>DSA Mastery</h3>
+            <p id="progress-text-dsa">0% complete</p>
+          </div>
+          <div class="stat-progress">
+            <svg class="progress-ring" width="60" height="60">
+              <circle class="progress-ring-circle" stroke="#1f1a3a" stroke-width="4" fill="transparent" r="26" cx="30" cy="30"/>
+              <circle id="progress-circle-dsa" class="progress-ring-circle" stroke="var(--accent-blue)" stroke-width="4" stroke-linecap="round" fill="transparent" r="26" cx="30" cy="30" stroke-dasharray="163.36" stroke-dashoffset="163.36"/>
+            </svg>
+          </div>
+        </div>
+        
+        <div class="glass-card stat-card">
+          <div class="stat-info">
+            <h3>System Design</h3>
+            <p id="progress-text-sys">0% complete</p>
+          </div>
+          <div class="stat-progress">
+            <svg class="progress-ring" width="60" height="60">
+              <circle class="progress-ring-circle" stroke="#1f1a3a" stroke-width="4" fill="transparent" r="26" cx="30" cy="30"/>
+              <circle id="progress-circle-sys" class="progress-ring-circle" stroke="var(--accent-pink)" stroke-width="4" stroke-linecap="round" fill="transparent" r="26" cx="30" cy="30" stroke-dasharray="163.36" stroke-dashoffset="163.36"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr; margin-top: 2rem;">
+        <!-- Practice Quick Launch -->
+        <div class="glass-card">
+          <h2 style="font-family: var(--font-display); margin-bottom: 1rem;"><i class="fa-solid fa-rocket" style="color: var(--accent-cyan);"></i> Quick Launch Practice</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Jump straight into dynamic problem solving. Click a topic below to generate a new quiz or design scenario challenge immediately.</p>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <button onclick="quickLaunch('DSA')" class="btn-glowing"><i class="fa-solid fa-gauge-high"></i> DSA Complexity Challenge</button>
+            <button onclick="quickLaunch('System Design')" class="btn-glowing" style="background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple)); box-shadow: 0 0 15px rgba(236, 0, 140, 0.3);"><i class="fa-solid fa-server"></i> Sys Design Scenario</button>
+            <button onclick="quickLaunch('RAG, MCP, Vector Database, LLM, Tokens')" class="btn-glowing" style="background: linear-gradient(135deg, var(--accent-blue), #818cf8); box-shadow: 0 0 15px rgba(79, 172, 254, 0.3);"><i class="fa-solid fa-brain"></i> GenAI Scenario Challenge</button>
+            <button onclick="quickLaunch('Langraph, MultiAgent, Crew AI')" class="btn-glowing" style="background: linear-gradient(135deg, #a855f7, #6366f1); box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);"><i class="fa-solid fa-route"></i> Multi-Agent Scenario</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: AI-ML-NLP -->
+    <section id="ai-ml-nlp-view" class="view-section">
+      <div class="glass-card" style="margin-bottom: 1.5rem;">
+        <h2 style="font-family: var(--font-display); margin-bottom: 0.5rem;"><i class="fa-solid fa-book-open"></i> Foundation Cards</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Click any card to flip it and study its definition. Mark cards as 'learnt' to update your progress dashboard.</p>
+      </div>
+
+      <div id="ai-study-grid" class="study-card-grid">
+        <!-- Flash cards loaded dynamically -->
+      </div>
+    </section>
+
+    <!-- SECTION: DSA -->
+    <section id="dsa-view" class="view-section">
+      <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem;">
+        <!-- Left Pane: Study Bank -->
+        <div>
+          <div class="glass-card" style="margin-bottom: 1rem;">
+            <h2 style="font-family: var(--font-display); margin-bottom: 0.5rem;"><i class="fa-solid fa-graduation-cap"></i> DSA Concept Bank</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Review these primary DSA interview concepts and equations.</p>
+          </div>
+          
+          <!-- Sub-tabs for DSA study bank -->
+          <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem;">
+            <button id="dsa-btn-foundations" onclick="switchDsaSubTab('foundations')" class="btn-complete done" style="flex: 1; padding: 0.6rem; font-family: var(--font-display); font-weight: 600; cursor: pointer; transition: var(--transition-fast);">Core Foundations</button>
+            <button id="dsa-btn-patterns" onclick="switchDsaSubTab('patterns')" class="btn-complete" style="flex: 1; padding: 0.6rem; font-family: var(--font-display); font-weight: 600; cursor: pointer; transition: var(--transition-fast);">Algorithmic Patterns</button>
+            <button id="dsa-btn-cheatsheets" onclick="switchDsaSubTab('cheatsheets')" class="btn-complete" style="flex: 1; padding: 0.6rem; font-family: var(--font-display); font-weight: 600; cursor: pointer; transition: var(--transition-fast);">Visual Cheatsheets</button>
+          </div>
+
+          <!-- Core Foundations Accordion Container -->
+          <div id="dsa-foundations-container" class="accordion-list">
+            <div id="dsa-foundations-accordion">
+              <!-- Accordion populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Algorithmic Patterns Accordion Container -->
+          <div id="dsa-patterns-container" class="accordion-list" style="display: none;">
+            <div id="dsa-patterns-accordion">
+              <!-- Accordion populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Visual Cheatsheets Grid -->
+          <div id="dsa-cheatsheets-container" style="display: none;" class="study-card-grid">
+            <div class="glass-card" style="padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem;">
+              <div style="width: 100%; height: 180px; overflow: hidden; border-radius: 8px; border: 1px solid var(--glass-border);">
+                <img src="dsa_cheatsheet.jpg" alt="DSA Cheat Sheet" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer; transition: transform 0.3s ease;" onclick="openLightbox('dsa_cheatsheet.jpg', 'DSA Cheat Sheet')" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1.0)'">
+              </div>
+              <h4 style="font-family: var(--font-display); font-size: 0.95rem; color: var(--text-bright); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">DSA Core Cheat Sheet</h4>
+              <button class="btn-complete" onclick="openLightbox('dsa_cheatsheet.jpg', 'DSA Cheat Sheet')" style="width: 100%;"><i class="fa-solid fa-expand"></i> View Fullscreen</button>
+            </div>
+            <div class="glass-card" style="padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem;">
+              <div style="width: 100%; height: 180px; overflow: hidden; border-radius: 8px; border: 1px solid var(--glass-border);">
+                <img src="dsa_pattern_cheatsheet.jpg" alt="DSA Pattern Recognition" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer; transition: transform 0.3s ease;" onclick="openLightbox('dsa_pattern_cheatsheet.jpg', 'DSA Pattern Recognition')" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1.0)'">
+              </div>
+              <h4 style="font-family: var(--font-display); font-size: 0.95rem; color: var(--text-bright); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">DSA Pattern Recognition</h4>
+              <button class="btn-complete" onclick="openLightbox('dsa_pattern_cheatsheet.jpg', 'DSA Pattern Recognition')" style="width: 100%;"><i class="fa-solid fa-expand"></i> View Fullscreen</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Pane: Interactive Console -->
+        <div class="glass-card">
+          <div class="practice-header" style="margin-bottom: 1.5rem;">
+            <div>
+              <h2 style="font-family: var(--font-display);"><i class="fa-solid fa-terminal" style="color: var(--accent-cyan);"></i> Complexity Guessing Chat</h2>
+              <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">Hit practice to generate a random code snippet.</p>
+            </div>
+            <button onclick="loadComplexityQuestion()" class="btn-glowing"><i class="fa-solid fa-wand-magic-sparkles"></i> Practice</button>
+          </div>
+
+          <!-- Console Screen -->
+          <div class="console-box">
+            <div class="console-header">
+              <div class="console-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <div style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--text-muted);" id="console-topic-tag">DSA: Idle</div>
+            </div>
+            <div class="console-body">
+              <div id="console-code-pane" class="code-snippet">
+// Hit the "Practice" button above to generate a new complexity challenge.
+// The code will appear here...
+              </div>
+            </div>
+          </div>
+
+          <!-- Multiple Choices -->
+          <div id="quiz-options-container" class="quiz-options" style="margin-top: 1.5rem; display: none;">
+            <button class="option-btn" onclick="selectComplexityOption(0)"><span id="opt-text-0">O(1)</span> <i class="fa-regular fa-circle"></i></button>
+            <button class="option-btn" onclick="selectComplexityOption(1)"><span id="opt-text-1">O(log n)</span> <i class="fa-regular fa-circle"></i></button>
+            <button class="option-btn" onclick="selectComplexityOption(2)"><span id="opt-text-2">O(n)</span> <i class="fa-regular fa-circle"></i></button>
+            <button class="option-btn" onclick="selectComplexityOption(3)"><span id="opt-text-3">O(n^2)</span> <i class="fa-regular fa-circle"></i></button>
+          </div>
+
+          <!-- Console Explanation -->
+          <div id="dsa-explanation-box" class="glass-card" style="margin-top: 1.5rem; display: none; border-color: var(--accent-blue);">
+            <h3 style="font-family: var(--font-display); color: var(--accent-cyan); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+              <i class="fa-solid fa-circle-info"></i> Explanation
+            </h3>
+            <p id="dsa-explanation-text" style="font-size: 0.95rem; line-height: 1.5; color: var(--text-main);"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: SYSTEM DESIGN -->
+    <section id="system-design-view" class="view-section">
+      <div class="practice-header" style="margin-bottom: 1.5rem;">
+        <div>
+          <h2 style="font-family: var(--font-display);"><i class="fa-solid fa-network-wired" style="color: var(--accent-pink);"></i> System Design Challenge Hub</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem;">Press the button to receive a tailored Happy Path layout or Failure Path incident.</p>
+        </div>
+        <button onclick="loadScenario('System Design')" class="btn-glowing" style="background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple)); box-shadow: 0 0 15px rgba(236, 0, 140, 0.3);"><i class="fa-solid fa-bolt"></i> Generate Scenario</button>
+      </div>
+
+      <div id="sys-sandbox" class="sandbox-split">
+        <!-- Left: Question Pane -->
+        <div class="glass-card challenge-pane">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="font-family: var(--font-display);" id="sys-challenge-title">Ready to Begin</h3>
+            <span id="sys-type-pill" class="challenge-type-pill happy" style="display: none;">Happy Path</span>
+          </div>
+          
+          <div id="sys-challenge-description" style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
+            Click the "Generate Scenario" button to dynamically request a detailed design scenario. The LLM will either challenge you with a Happy Path (design from scratch) or a Failure Path (diagnose & resolve outage).
+          </div>
+          
+          <div id="sys-challenge-prompt" style="font-style: italic; font-weight: 500; color: var(--text-bright); border-left: 3px solid var(--accent-blue); padding-left: 1rem; margin-top: 1rem; display: none;">
+          </div>
+        </div>
+
+        <!-- Right: Editor Pane -->
+        <div class="glass-card editor-pane">
+          <h3 style="font-family: var(--font-display);"><i class="fa-solid fa-feather"></i> Your Proposed Architecture</h3>
+          <textarea id="sys-solution-input" class="editor-textarea" placeholder="Explain your design components, database selection, failure failovers, caching structures, and step-by-step logic here..." disabled></textarea>
+          
+          <button id="sys-submit-btn" onclick="submitScenario('System Design')" class="btn-solid" style="align-self: flex-end;" disabled><i class="fa-solid fa-paper-plane"></i> Submit Solution</button>
+        </div>
+      </div>
+
+      <!-- Live Evaluation Feedback Box -->
+      <div id="sys-feedback-box" class="glass-card feedback-box" style="display: none; margin-top: 1.5rem;">
+        <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
+          <div id="sys-feedback-grade" class="grade-badge a">A</div>
+          <div style="flex-grow: 1;">
+            <h3 id="sys-feedback-summary" style="font-family: var(--font-display); color: var(--text-bright); margin-bottom: 0.5rem;">Visual architecture feedback</h3>
+            <p id="sys-feedback-critical" style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: ADVANCED GENAI -->
+    <section id="advanced-genai-view" class="view-section">
+      <div class="practice-header" style="margin-bottom: 1.5rem;">
+        <div>
+          <h2 style="font-family: var(--font-display);"><i class="fa-solid fa-brain" style="color: var(--accent-blue);"></i> Advanced GenAI Scenario Hub</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem;">Practice multi-source RAG pipelines, Vector DB latency issues, and MCP safety guards.</p>
+        </div>
+        <button onclick="loadScenario('RAG, MCP, Vector Database, LLM, Tokens')" class="btn-glowing" style="background: linear-gradient(135deg, var(--accent-blue), #818cf8); box-shadow: 0 0 15px rgba(79, 172, 254, 0.3);"><i class="fa-solid fa-bolt"></i> Generate Scenario</button>
+      </div>
+
+      <div id="genai-sandbox" class="sandbox-split">
+        <!-- Left: Question Pane -->
+        <div class="glass-card challenge-pane">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="font-family: var(--font-display);" id="genai-challenge-title">Ingestion & Semantic Sandboxes</h3>
+            <span id="genai-type-pill" class="challenge-type-pill failure" style="display: none;">Failure Path</span>
+          </div>
+          
+          <div id="genai-challenge-description" style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
+            Click "Generate Scenario" to create an advanced challenge based on Vector Databases, retrieval contexts, token overloads, or MCP tool discovery protocols.
+          </div>
+          
+          <div id="genai-challenge-prompt" style="font-style: italic; font-weight: 500; color: var(--text-bright); border-left: 3px solid var(--accent-cyan); padding-left: 1rem; margin-top: 1rem; display: none;">
+          </div>
+        </div>
+
+        <!-- Right: Editor Pane -->
+        <div class="glass-card editor-pane">
+          <h3 style="font-family: var(--font-display);"><i class="fa-solid fa-feather"></i> Your Proposed Architecture</h3>
+          <textarea id="genai-solution-input" class="editor-textarea" placeholder="Explain your embedding strategy, semantic indices, fallback parameters, token budgets, and integration logic..." disabled></textarea>
+          
+          <button id="genai-submit-btn" onclick="submitScenario('RAG, MCP, Vector Database, LLM, Tokens')" class="btn-solid" style="align-self: flex-end;" disabled><i class="fa-solid fa-paper-plane"></i> Submit Solution</button>
+        </div>
+      </div>
+
+      <!-- Live Evaluation Feedback Box -->
+      <div id="genai-feedback-box" class="glass-card feedback-box" style="display: none; margin-top: 1.5rem;">
+        <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
+          <div id="genai-feedback-grade" class="grade-badge b">B</div>
+          <div style="flex-grow: 1;">
+            <h3 id="genai-feedback-summary" style="font-family: var(--font-display); color: var(--text-bright); margin-bottom: 0.5rem;">Retrieval-Augmented Architecture analysis</h3>
+            <p id="genai-feedback-critical" style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: MULTI-AGENT -->
+    <section id="multi-agent-view" class="view-section">
+      <div class="practice-header" style="margin-bottom: 1.5rem;">
+        <div>
+          <h2 style="font-family: var(--font-display);"><i class="fa-solid fa-route" style="color: #a855f7;"></i> Multi-Agent System Hub</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem;">Resolve loop dependencies, state transitions, state splits, and CrewAI delegation paths.</p>
+        </div>
+        <button onclick="loadScenario('Langraph, MultiAgent, Crew AI')" class="btn-glowing" style="background: linear-gradient(135deg, #a855f7, #6366f1); box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);"><i class="fa-solid fa-bolt"></i> Generate Scenario</button>
+      </div>
+
+      <div id="agent-sandbox" class="sandbox-split">
+        <!-- Left: Question Pane -->
+        <div class="glass-card challenge-pane">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="font-family: var(--font-display);" id="agent-challenge-title">Cycles & Orchestrators</h3>
+            <span id="agent-type-pill" class="challenge-type-pill happy" style="display: none;">Happy Path</span>
+          </div>
+          
+          <div id="agent-challenge-description" style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
+            Click "Generate Scenario" to load custom multi-agent cooperative routing configurations, cyclic graph limits, or state synchronization challenges.
+          </div>
+          
+          <div id="agent-challenge-prompt" style="font-style: italic; font-weight: 500; color: var(--text-bright); border-left: 3px solid #a855f7; padding-left: 1rem; margin-top: 1rem; display: none;">
+          </div>
+        </div>
+
+        <!-- Right: Editor Pane -->
+        <div class="glass-card editor-pane">
+          <h3 style="font-family: var(--font-display);"><i class="fa-solid fa-feather"></i> Your Proposed Architecture</h3>
+          <textarea id="agent-solution-input" class="editor-textarea" placeholder="Explain your agent state variables, graph node transition guards, cyclic loops bounds, validation tools, and team schemas..." disabled></textarea>
+          
+          <button id="agent-submit-btn" onclick="submitScenario('Langraph, MultiAgent, Crew AI')" class="btn-solid" style="align-self: flex-end;" disabled><i class="fa-solid fa-paper-plane"></i> Submit Solution</button>
+        </div>
+      </div>
+
+      <!-- Live Evaluation Feedback Box -->
+      <div id="agent-feedback-box" class="glass-card feedback-box" style="display: none; margin-top: 1.5rem;">
+        <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
+          <div id="agent-feedback-grade" class="grade-badge a">A</div>
+          <div style="flex-grow: 1;">
+            <h3 id="agent-feedback-summary" style="font-family: var(--font-display); color: var(--text-bright); margin-bottom: 0.5rem;">Graph execution analysis</h3>
+            <p id="agent-feedback-critical" style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: SETTINGS -->
+    <section id="settings-view" class="view-section">
+      <div class="glass-card" style="max-width: 600px;">
+        <h2 style="font-family: var(--font-display); margin-bottom: 1rem;"><i class="fa-solid fa-gear"></i> Adaptive Settings Panel</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Configure your platform settings below. Storing your Gemini API key activates fully dynamic live challenges and grading.</p>
+        
+        <div class="input-group">
+          <label for="gemini-key-input">Google Gemini API Key</label>
+          <input type="password" id="gemini-key-input" class="input-field" placeholder="Enter your GEMINI_API_KEY...">
+          <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.5rem;">Your key is stored locally in your browser's private localStorage and is never sent to third-party servers.</p>
+        </div>
+        
+        <button onclick="saveApiKey()" class="btn-glowing"><i class="fa-solid fa-floppy-disk"></i> Save Configurations</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Fullscreen Lightbox Modal -->
+  <div id="lightbox-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(6, 5, 11, 0.95); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(12px); animation: fadeIn 0.2s ease-out;">
+    <span onclick="closeLightbox()" style="position: absolute; top: 20px; right: 30px; font-size: 2.5rem; color: #fff; cursor: pointer; user-select: none; transition: var(--transition-fast);" onmouseover="this.style.color='var(--accent-cyan)'" onmouseout="this.style.color='#fff'">&times;</span>
+    <div style="max-width: 90%; max-height: 90%; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+      <h3 id="lightbox-title" style="font-family: var(--font-display); color: #fff; font-size: 1.5rem; letter-spacing: 0.5px;">Cheat Sheet</h3>
+      <div style="overflow: auto; max-height: 75vh; border-radius: 12px; border: 2px solid var(--glass-border); box-shadow: var(--glass-glow);">
+        <img id="lightbox-img" src="" alt="Cheat Sheet Zoom" style="display: block; max-width: 100%; max-height: 75vh; object-fit: contain;">
+      </div>
+      <a id="lightbox-download" href="" download class="btn-glowing" style="font-size: 0.85rem; padding: 0.6rem 1.2rem; text-decoration: none;"><i class="fa-solid fa-download"></i> Download Full Resolution</a>
+    </div>
+  </div>
+
+  <!-- Sliding Journey Ledger Drawer -->
+  <div id="ledger-drawer" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 999; transition: opacity 0.25s ease-out;">
+    <!-- Backdrop overlay -->
+    <div class="drawer-backdrop" onclick="closeLedgerDrawer()" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(6, 5, 11, 0.65); backdrop-filter: blur(8px);"></div>
+    <!-- Drawer content panel -->
+    <div class="drawer-content glass-card" style="position: absolute; top: 0; right: 0; width: 450px; max-width: 90%; height: 100vh; border-radius: 0; border-left: 1px solid var(--glass-border); background: rgba(15, 14, 32, 0.95); box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5); display: flex; flex-direction: column; padding: 2.5rem 2rem; transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); overflow-y: auto;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1.25rem;">
+        <h2 style="font-family: var(--font-display); font-size: 1.4rem; color: var(--text-bright); display: flex; align-items: center; gap: 0.75rem;">
+          <i class="fa-solid fa-history" style="color: var(--accent-cyan);"></i> Journey Log History
+        </h2>
+        <span onclick="closeLedgerDrawer()" style="font-size: 2.2rem; color: var(--text-muted); cursor: pointer; user-select: none; line-height: 1; transition: var(--transition-fast);" onmouseover="this.style.color='var(--accent-pink)'" onmouseout="this.style.color='var(--text-muted)'">&times;</span>
+      </div>
+      <div id="journey-ledger-list" class="journey-ledger" style="flex-grow: 1; overflow-y: auto;">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript controller -->
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+{
+  "progress": {
+    "AI": {
+      "completedCards": [],
+      "totalQuestions": 0
+    },
+    "ML": {
+      "completedCards": [],
+      "totalQuestions": 0
+    },
+    "NLP": {
+      "completedCards": [],
+      "totalQuestions": 0
+    },
+    "DSA": {
+      "completedCards": [],
+      "complexityCorrect": 2,
+      "complexityTotal": 3,
+      "totalQuestions": 0
+    },
+    "System Design": {
+      "completedCards": [],
+      "scenariosAttempted": 4,
+      "totalQuestions": 0
+    },
+    "RAG, MCP, Vector Database, LLM, Tokens": {
+      "completedCards": [],
+      "scenariosAttempted": 0,
+      "totalQuestions": 0
+    },
+    "Langraph, MultiAgent, Crew AI": {
+      "completedCards": [],
+      "scenariosAttempted": 0,
+      "totalQuestions": 0
+    }
+  },
+  "scenariosHistory": [
+    {
+      "timestamp": "2026-05-28T05:33:20.670Z",
+      "title": "Mitigate Notification Queue Bottlenecks",
+      "subtype": "failure_path",
+      "description": "During a major marketing campaign, the SMS gateway provider suddenly starts rate-limiting your outgoing requests, causing a massive backlog that delays critical system emails.",
+      "userAnswer": "we will use kafka where we will have two services sms service and email service, so all marketing campaigns are stored in kafka, for sms and later sent or will be sent with the rate limiting threshold and mail service will seperately do the mail communications",
+      "feedback": {
+        "grade": "B",
+        "summary": "Good general troubleshooting steps. To make it enterprise-grade, build automated self-healing mechanisms.",
+        "criticalReview": "Introduce structured queues (like RabbitMQ/SQS) and circuit breakers to automatically throttle connections."
+      }
+    },
+    {
+      "timestamp": "2026-05-28T05:33:23.674Z",
+      "title": "Mitigate Notification Queue Bottlenecks",
+      "subtype": "failure_path",
+      "description": "During a major marketing campaign, the SMS gateway provider suddenly starts rate-limiting your outgoing requests, causing a massive backlog that delays critical system emails.",
+      "userAnswer": "we will use kafka where we will have two services sms service and email service, so all marketing campaigns are stored in kafka, for sms and later sent or will be sent with the rate limiting threshold and mail service will seperately do the mail communications",
+      "feedback": {
+        "grade": "B",
+        "summary": "Good general troubleshooting steps. To make it enterprise-grade, build automated self-healing mechanisms.",
+        "criticalReview": "Introduce structured queues (like RabbitMQ/SQS) and circuit breakers to automatically throttle connections."
+      }
+    },
+    {
+      "timestamp": "2026-05-28T05:33:24.791Z",
+      "title": "Mitigate Notification Queue Bottlenecks",
+      "subtype": "failure_path",
+      "description": "During a major marketing campaign, the SMS gateway provider suddenly starts rate-limiting your outgoing requests, causing a massive backlog that delays critical system emails.",
+      "userAnswer": "we will use kafka where we will have two services sms service and email service, so all marketing campaigns are stored in kafka, for sms and later sent or will be sent with the rate limiting threshold and mail service will seperately do the mail communications",
+      "feedback": {
+        "grade": "B",
+        "summary": "Good general troubleshooting steps. To make it enterprise-grade, build automated self-healing mechanisms.",
+        "criticalReview": "Introduce structured queues (like RabbitMQ/SQS) and circuit breakers to automatically throttle connections."
+      }
+    },
+    {
+      "timestamp": "2026-05-28T05:33:25.779Z",
+      "title": "Mitigate Notification Queue Bottlenecks",
+      "subtype": "failure_path",
+      "description": "During a major marketing campaign, the SMS gateway provider suddenly starts rate-limiting your outgoing requests, causing a massive backlog that delays critical system emails.",
+      "userAnswer": "we will use kafka where we will have two services sms service and email service, so all marketing campaigns are stored in kafka, for sms and later sent or will be sent with the rate limiting threshold and mail service will seperately do the mail communications",
+      "feedback": {
+        "grade": "B",
+        "summary": "Good general troubleshooting steps. To make it enterprise-grade, build automated self-healing mechanisms.",
+        "criticalReview": "Introduce structured queues (like RabbitMQ/SQS) and circuit breakers to automatically throttle connections."
+      }
+    }
+  ],
+  "complexityHistory": [
+    {
+      "timestamp": "2026-05-28T04:57:59.423Z",
+      "topic": "DSA: Binary Search",
+      "isCorrect": false,
+      "selectedOption": "O(n)",
+      "correctOption": "O(log n)"
+    },
+    {
+      "timestamp": "2026-05-28T04:59:49.684Z",
+      "topic": "DSA: Matrix Multiplication",
+      "isCorrect": true,
+      "selectedOption": "O(n^3)",
+      "correctOption": "O(n^3)"
+    },
+    {
+      "timestamp": "2026-05-28T05:00:29.110Z",
+      "topic": "DSA: Binary Search",
+      "isCorrect": true,
+      "selectedOption": "O(log n)",
+      "correctOption": "O(log n)"
+    }
+  ]
+}
