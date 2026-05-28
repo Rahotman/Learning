@@ -27,6 +27,26 @@ const DEFAULT_LEARNING_BANK = {
       "id": "ai_2",
       "question": "What is the difference between Narrow AI and General AI (AGI)?",
       "answer": "Narrow AI (Weak AI) is trained and focused to perform a single specific task, such as translation or playing chess (e.g., Siri, AlphaGo). General AI (Strong AI / AGI) is a hypothetical system that possesses human-like cognitive abilities across all domains, enabling it to learn, reason, and apply intelligence to any problem it encounters."
+    },
+    {
+      "id": "ai_3",
+      "question": "The Turing Test vs. Searle's Chinese Room Argument",
+      "answer": "1. **The Turing Test**: Proposed by Alan Turing (1950), it measures a machine's ability to exhibit intelligent behavior equivalent to, or indistinguishable from, a human. If an interrogator cannot reliably tell the machine apart from the human via text, the machine passes.\n2. **Chinese Room Argument**: Proposed by John Searle (1980), it challenges the Turing Test by showing that a person sitting in a closed room with a rulebook could translate Chinese symbols perfectly without actually understanding Chinese. Searle argues that syntactic symbol manipulation does not equal semantic understanding (challenging 'Strong AI')."
+    },
+    {
+      "id": "ai_4",
+      "question": "Symbolic AI (GOFAI) & Rule-Based Expert Systems",
+      "answer": "Early AI research was dominated by **Symbolic AI** (Good Old-Fashioned AI or GOFAI), based on the philosophy that human intelligence is structured symbol manipulation. \n- **Expert Systems** are the pinnacle of this era, comprising a **Knowledge Base** (a collection of IF-THEN rules) and an **Inference Engine** (which applies logical deductions to solve specific tasks).\n- **Limitations**: They struggle with raw unstructured data (like audio or images), require tedious manual engineering of rules, and fail to handle noise or probability."
+    },
+    {
+      "id": "ai_5",
+      "question": "Neural Networks & Connectionist AI Foundations",
+      "answer": "Unlike Symbolic AI, **Connectionist AI** models intelligence as networks of simple, interconnected units, mimicking biological brain neurons.\n- **Neuron Structure**: Receives numerical inputs, multiplies them by adjustable **weights**, adds a **bias** term, and processes the result through an **activation function** (e.g., ReLU, Sigmoid) to introduce non-linearity.\n- **Learning**: Networks adapt by backpropagating error margins and shifting weights, allowing automated feature discovery rather than manually programmed rules."
+    },
+    {
+      "id": "ai_6",
+      "question": "Deep Learning & The GPU Hardware Revolution",
+      "answer": "Deep Learning scales standard neural networks by stacking multiple **Hidden Layers** (often dozens or hundreds) to learn hierarchical representations of data (e.g., edge detection -> shape recognition -> object identification).\n- **GPU Revolution**: Standard computer CPUs process instructions sequentially, whereas training deep networks requires performing billions of matrix multiplications simultaneously. Graphics Processing Units (GPUs) contain thousands of small cores designed for parallel math execution, which enabled the rapid training of modern large-scale neural network models."
     }
   ],
   "ML": [
@@ -39,6 +59,26 @@ const DEFAULT_LEARNING_BANK = {
       "id": "ml_2",
       "question": "What is Overfitting and how can it be prevented?",
       "answer": "Overfitting occurs when a machine learning model learns the training data's noise and details too well, causing it to perform exceptionally on training sets but poorly on unseen test data. It can be prevented by:\n- Using **regularization** techniques (L1/L2 penalties).\n- Gathering more training data.\n- Applying **cross-validation**.\n- Using **dropout layers** (in neural nets) or pruning (in decision trees).\n- Simplifying the model architecture."
+    },
+    {
+      "id": "ml_3",
+      "question": "The Bias-Variance Tradeoff in Machine Learning",
+      "answer": "The Bias-Variance Tradeoff is the fundamental balance governing a model's generalization capabilities:\n- **Bias**: Error introduced by simplifying assumptions. High bias leads to **underfitting** (the model cannot capture the underlying structure, e.g., using a linear model for quadratic data).\n- **Variance**: Error introduced by extreme sensitivity to training noise. High variance leads to **overfitting** (the model fits training data perfectly but fails to generalize to test data).\n- **Goal**: Minimize the sum of both errors to find the sweet spot of optimal model complexity."
+    },
+    {
+      "id": "ml_4",
+      "question": "Gradient Descent Optimization & Backpropagation",
+      "answer": "How models actually learn:\n- **Loss Function**: A mathematical formula measuring the distance between model predictions and correct labels (e.g., Mean Squared Error).\n- **Gradient Descent**: An optimization algorithm that calculates the partial derivatives (gradients) of the loss function relative to model weights, taking small steps downwards towards the global minimum.\n- **Backpropagation**: The systematic application of the mathematical **Chain Rule** from calculus. It moves backwards through network layers to compute the error gradients for every weight, allowing optimizers (like Adam or SGD) to adjust weights efficiently."
+    },
+    {
+      "id": "ml_5",
+      "question": "Decision Trees, Random Forests & Ensemble Learning",
+      "answer": "1. **Decision Trees**: Partition data iteratively based on attributes that maximize **Information Gain** (minimizing Entropy or Gini Impurity). They are highly interpretable but prone to overfitting.\n2. **Ensemble Learning**: Unifies multiple weak model predictions to produce a robust model.\n   - **Bagging (Bootstrap Aggregating)**: Trains models in parallel on random training subsets. **Random Forests** use bagging with decision trees to reduce variance.\n   - **Boosting**: Trains models sequentially, where each new model focuses on correcting the errors made by previous models (e.g., XGBoost, AdaBoost) to reduce bias."
+    },
+    {
+      "id": "ml_6",
+      "question": "Model Evaluation Metrics: Precision, Recall, F1 & ROC-AUC",
+      "answer": "Evaluating model performance beyond simple accuracy:\n- **Precision**: Of all positive predictions, how many were actually correct? (True Positives / [True Positives + False Positives]). Crucial for spam detection.\n- **Recall (Sensitivity)**: Of all actual positive cases, how many did the model identify? (True Positives / [True Positives + False Negatives]). Crucial for medical diagnostics.\n- **F1-Score**: The harmonic mean of Precision and Recall, providing a balanced metric for imbalanced datasets.\n- **ROC-AUC**: Represents the Area Under the Receiver Operating Characteristic curve. Measures a classifier's ability to distinguish classes across all probability thresholds."
     }
   ],
   "NLP": [
@@ -51,6 +91,26 @@ const DEFAULT_LEARNING_BANK = {
       "id": "nlp_2",
       "question": "What are Word Embeddings and how do they capture meaning?",
       "answer": "Word Embeddings (e.g., Word2Vec, GloVe, BERT embeddings) are dense vector representations of words in a high-dimensional continuous space. They capture semantic meanings by mapping words that appear in similar contexts close together in the vector space. This allows mathematical capture of word relationships, like 'king - man + woman = queen'."
+    },
+    {
+      "id": "nlp_3",
+      "question": "Sequence Modeling: RNNs, LSTMs & GRUs",
+      "answer": "1. **Recurrent Neural Networks (RNNs)**: Designed to process sequential text by maintaining a 'hidden state' loop. However, they struggle with long-range dependencies due to the **Vanishing Gradient** problem.\n2. **Long Short-Term Memory (LSTM)**: Solves vanishing gradients by introducing a cell state regulated by three gated structures:\n   - **Forget Gate**: Decides what historical context to discard.\n   - **Input Gate**: Decides what new incoming data to store.\n   - **Output Gate**: Decides what information from the current state to output.\n3. **GRU (Gated Recurrent Unit)**: A simplified LSTM variant merging cell and hidden states."
+    },
+    {
+      "id": "nlp_4",
+      "question": "The Transformer Revolution & Self-Attention Mechanics",
+      "answer": "Introduced by Vaswani et al. (2017), the **Transformer** replaced recurrent hidden states with parallelizable **Self-Attention** mechanics, dramatically accelerating training.\n- **Self-Attention**: Allows each word in a sentence to interact with every other word, assigning importance weights dynamically based on context. It uses Query ($Q$), Key ($K$), and Value ($V$) mathematical projection matrices.\n- **Positional Encodings**: Since there is no recurrent indexing, transformers inject sine and cosine wave coordinates to preserve word order context."
+    },
+    {
+      "id": "nlp_5",
+      "question": "LLM Pipelines: Pre-training, Fine-Tuning & RLHF Alignment",
+      "answer": "The lifecycle of modern Large Language Models (LLMs):\n1. **Pre-training**: Self-supervised training on massive web datasets for next-token prediction, learning grammar, facts, and reasoning properties.\n2. **Supervised Fine-Tuning (SFT)**: Instruction-tuning using high-quality prompt-response pairs to learn how to behave as an helpful conversational assistant.\n3. **RLHF (Reinforcement Learning from Human Feedback)**: Aligns models with human values (helpfulness, honesty, safety). Human preferences train a **Reward Model**, which grades LLM outputs. A policy optimization algorithm (like PPO or DPO) then refines the LLM based on these reward scores."
+    },
+    {
+      "id": "nlp_6",
+      "question": "RAG (Retrieval-Augmented Generation) vs. Fine-Tuning",
+      "answer": "Two primary paths for customizing LLMs with domain knowledge:\n- **Retrieval-Augmented Generation (RAG)**: Connects LLMs to real-time external vector databases. During queries, relevant passages are retrieved and injected into the prompt. Best for dynamic, up-to-date documentation and complete factual references.\n- **Fine-Tuning**: Modifies the model's actual weights on specialized training sets. Best for adapting the model's tone, styling layout formats, learning specialized terminologies, and training on highly specific reasoning workflows."
     }
   ],
   "DSA": [
